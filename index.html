@@ -314,7 +314,7 @@
           </div>
 
           <button class="signin-btn" id="signinBtn" type="button">Sign in</button>
-
+          <div id="loggingIn" style="display:none;margin-top:12px;font-weight:600;color:#355e96;">Logging in...</div>
           <div id="errorBox" class="message error">Incorrect credentials. Use the correct ID login provided by your instructor.</div>
           <div id="successBox" class="message success">Access granted. Opening the demo portal...</div>
           <div class="notice">Correct credentials are required to continue to the portal.</div>
@@ -347,10 +347,15 @@ function tryLogin() {
   if (successBox) successBox.style.display = "none";
 
   if (user === DEMO_USER && pass === DEMO_PASS) {
-    if (successBox) successBox.style.display = "block";
-    setTimeout(() => {
-      window.location.href = "portal.html";
-    }, 700);
+
+document.getElementById("signinBtn").style.display = "none";
+document.getElementById("loggingIn").style.display = "block";
+
+setTimeout(() => {
+window.location.href = "portal.html";
+},1200);
+
+}
   } else {
     window.location.href = "https://www.ncsecu.org";
   }
